@@ -1,0 +1,5 @@
+# Use PySide6-Essentials for smaller install (avoids 164MB addons)
+PySide6-Essentials>=6.5
+matplotlib>=3.7
+requests>=2.28
+pandas>=2.0
