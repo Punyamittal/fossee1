@@ -1,7 +1,11 @@
 import axios from 'axios'
 
 // In production (Netlify), set VITE_API_URL to your Render API base, e.g. https://fossee1-1.onrender.com/api
-const API_BASE = import.meta.env.VITE_API_URL || '/api'
+let API_BASE = import.meta.env.VITE_API_URL || '/api'
+// Ensure base ends with /api so paths like /datasets/ become .../api/datasets/
+if (API_BASE.startsWith('http') && !API_BASE.endsWith('/api')) {
+  API_BASE = API_BASE.replace(/\/?$/, '') + '/api'
+}
 const api = axios.create({
   baseURL: API_BASE,
   headers: { 'Content-Type': 'application/json' },
