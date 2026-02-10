@@ -1,0 +1,14 @@
+# Render Blueprint: backend Web Service
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: fossee-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn config.wsgi:application
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "false"
