@@ -84,8 +84,14 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS - allow React frontend
-CORS_ALLOW_ALL_ORIGINS = DEBUG  # In prod, set CORS_ALLOWED_ORIGINS
+# CORS - allow React frontend (Netlify). Set env CORS_ALLOWED_ORIGINS to add more (comma-separated).
+_cors_raw = os.environ.get('CORS_ALLOWED_ORIGINS')
+if _cors_raw:
+    CORS_ALLOWED_ORIGINS = [o.strip() for o in _cors_raw.split(',') if o.strip()]
+elif not DEBUG:
+    CORS_ALLOWED_ORIGINS = ['https://fossee2.netlify.app']
+else:
+    CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 # REST Framework
