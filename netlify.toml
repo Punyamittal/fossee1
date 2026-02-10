@@ -1,0 +1,12 @@
+# Netlify config for fossee1 (frontend at fossee2.netlify.app)
+# Base directory so Netlify builds and publishes the web-frontend app
+[build]
+  base = "web-frontend"
+  publish = "dist"
+  command = "npm run build"
+
+# SPA: serve index.html for all routes (fixes 404 on /login, /dataset/:id, etc.)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
