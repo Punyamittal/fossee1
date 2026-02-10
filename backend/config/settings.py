@@ -58,10 +58,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+# On Render the app filesystem is read-only; use /tmp for SQLite so migrate and writes work (data is ephemeral).
+_db_path = '/tmp/db.sqlite3' if os.environ.get('RENDER') else BASE_DIR / 'db.sqlite3'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(_db_path),
     }
 }
 
@@ -80,7 +82,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# On Render use /tmp so report generation and uploads can write
+MEDIA_ROOT = Path('/tmp/media') if os.environ.get('RENDER') else BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
