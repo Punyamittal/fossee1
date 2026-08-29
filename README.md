@@ -1,29 +1,30 @@
 ![Project Banner](docs/readme-agent/banner.svg)
 
-# Chemical Equipment Parameter Visualizer System Analysis
+# Fossee1: Multi-Client Data Analysis and Reporting Platform
 
-A multi-client, three-tier application designed to ingest, process, and visualize chemical equipment operational parameters using a central Django REST API.
+A three-tier, multi-client platform designed for robust data ingestion, complex analysis using Pandas, and generating comprehensive reports via web dashboard and desktop applications.
 
 ## Overview
 
-The system is a comprehensive data visualization platform built around a central Django REST Framework (DRF) backend. It supports multiple client interfaces—a web frontend (React) and a desktop application (PySide6)—to consume processed data. The core functionality involves ingesting raw data (e.g., CSV files), performing complex calculations and data cleaning using Pandas, and presenting the results through various visualization formats, including interactive web dashboards and printable PDF reports.
+Fossee1 is a sophisticated data analysis system built on a three-tier architecture (Django Backend, React Web Frontend, and PySide6 Desktop Client). Its primary function is to ingest disparate data sources (e.g., CSV uploads), process them through a defined pipeline, and provide visualization and reporting capabilities across multiple user interfaces. The system is designed to handle complex business logic, data persistence, and output generation (PDF reports, charts).
 
 ## Problem
 
-The need for a centralized, reliable, and multi-platform system to ingest disparate operational data (like chemical equipment parameters) and transform it into actionable, visualized insights for various stakeholders (web users, desktop analysts).
+The system addresses the challenge of managing and analyzing data from disparate sources that require standardized processing, visualization, and reporting. The need for multiple access points (web dashboard for general use, desktop client for specialized tasks, and API for integration) necessitates a robust, centralized backend.
 
 ## Solution
 
-The solution implements a three-tier architecture: a robust Django backend for data persistence and business logic; a React web frontend for browser-based visualization; and a PySide6 desktop client for specialized, offline, or high-fidelity reporting tasks.
+The solution implements a centralized Django backend that acts as the core processing engine. Data is ingested via file uploads or API calls, processed using Pandas, and then exposed through RESTful APIs. The results are consumed by specialized frontends: a React SPA for the web dashboard, and a PySide6 application for a dedicated desktop experience.
 
 ## Key Features
 
-- Data Ingestion: Accepts raw data uploads (e.g., CSV) via the API.
-- Parameter Processing: Performs complex data cleaning, calculation, and parameter extraction using Pandas.
-- Authentication: Implements user authentication and authorization via the API.
-- Web Dashboard Visualization: Provides an interactive, browser-based dashboard for real-time parameter viewing (React/Chart.js).
-- Desktop Visualization: Offers a dedicated desktop client for specialized visualization and reporting (PySide6/Matplotlib).
-- Report Generation: Supports generating downloadable PDF reports summarizing the analyzed parameters.
+- CSV File Upload and Ingestion
+- Pandas-based Data Processing and Transformation
+- Web Dashboard Visualization (React/Chart.js)
+- Desktop Application Interface (PySide6)
+- PDF Report Generation (ReportLab)
+- Authentication and Authorization (JWT)
+- Multi-Client Access (Web, Desktop, API)
 
 ## Technology Stack
 
@@ -34,195 +35,149 @@ The solution implements a three-tier architecture: a robust Django backend for d
 - JavaScript
 - PySide6
 - Pandas
-- Chart.js
+- ReportLab
 - Matplotlib
+- JWT
 
-# 📊 Fossee1: Equipment Data Analysis Platform
+# Project Title
 
-Fossee1 is a comprehensive web and desktop application designed for the ingestion, analysis, and reporting of equipment operational data. It provides a centralized platform for visualizing trends, generating detailed reports, and maintaining a historical record of asset performance.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Project Title is a comprehensive, full-stack application designed to manage complex data workflows, providing both a robust backend API and an intuitive frontend user interface. It facilitates the ingestion, processing, and querying of structured and unstructured data.
 
 ## ✨ Features
 
-*   **Data Ingestion:** Supports CSV file uploads for easy data integration.
-*   **Summary Statistics:** Provides immediate statistical insights (min, max, average, etc.) upon data upload.
-*   **Visualization:** Generates interactive charts (line, bar, etc.) to visualize trends over time.
-*   **Data Table:** Displays raw and processed data in a sortable, filterable table.
-*   **Reporting:** Generates professional, downloadable PDF reports summarizing the analysis.
-*   **History Tracking:** Maintains a complete log of all uploaded data and analyses.
-*   **Authentication:** Secure user login system to protect sensitive operational data.
+*   **Data Ingestion:** Supports multiple data sources, allowing users to upload files and connect to external APIs.
+*   **Workflow Automation:** Manages multi-step data processing pipelines, ensuring data integrity from source to final output.
+*   **RESTful API:** Provides a secure, well-documented API gateway for programmatic access and integration with other services.
+*   **User Authentication:** Implements secure user management and role-based access control.
+*   **Real-time Querying:** Enables complex data querying and visualization through the frontend dashboard.
 
 ## 🚀 Getting Started
 
-This guide will walk you through setting up the application locally.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-Before you begin, ensure you have the following installed:
+Ensure you have the following installed:
 
-*   Python 3.10+ (Recommended)
-*   Node.js 18+ (Recommended)
-*   pip (Python package installer)
-*   npm (Node Package Manager)
+*   **Node.js:** (LTS version recommended)
+*   **Python 3.10+**
+*   **npm**
 
 ### Installation
 
-Follow these steps to set up the backend, frontend, and desktop components.
-
-**1. Clone the Repository**
-
-```bash
-git clone <repository-url>
-cd fossee1
+1.  **Clone the Repository:**
+    ```bash
+git clone [REPOSITORY_URL]
+cd ProjectTitle
 ```
 
-**2. Setup Backend (Python)**
+2.  **Backend Setup (Python/Django):**
+    The backend handles data processing and API logic.
+    ```bash
+# Create and activate a virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-```bash
-# Install Python dependencies
+# Install dependencies
 pip install -r backend/requirements.txt
 ```
 
-**3. Setup Frontend (Node.js)**
-
-```bash
-# Navigate to the web directory
+3.  **Frontend Setup (Node.js/React):**
+    The frontend provides the user interface.
+    ```bash
+# Navigate to the frontend directory
 cd frontend
-# Install Node dependencies
-npm install
-```
 
-**4. Setup Desktop Client (Optional)**
-
-```bash
-# Navigate to the desktop directory
-cd desktop
 # Install dependencies
 npm install
 ```
 
 ### Running the Application
 
-**1. Start the Backend Server**
+**1. Start the Backend Server:**
 
+In the root directory (or the backend directory, depending on project structure):
 ```bash
-# Run the Flask application
-python backend/app.py
+# Ensure your virtual environment is active
+python manage.py runserver
+# The backend will typically run on http://localhost:8000
 ```
 
-**2. Start the Frontend Web App**
+**2. Start the Frontend Client:**
 
+In the `frontend` directory:
 ```bash
-# Run the React development server
-cd ../frontend
-npm start
-```
-
-**3. Run the Desktop Client**
-
-```bash
-# From the desktop directory
-cd ../desktop
 npm run dev
+# The frontend will typically run on http://localhost:3000
 ```
 
-> **Note:** The application is designed to run across multiple components (Backend API, Frontend Web UI, and Desktop Client). Ensure all services are running simultaneously for full functionality.
+Your application should now be accessible at the frontend URL, communicating with the backend API.
 
-## 💾 Data Handling
+## 📚 Usage Guide
 
-### CSV Upload
+### Core Workflow
 
-The platform accepts data via CSV upload. The expected structure for the CSV file is:
+1.  **Authentication:** Users must first log in via the frontend dashboard. The frontend communicates with the `/api/auth/login` endpoint.
+2.  **Data Ingestion:** Use the 'Upload Data' feature. The frontend sends the file to the backend's ingestion endpoint (`/api/data/upload`). The backend processes the file and stores metadata.
+3.  **Workflow Trigger:** Initiate a processing workflow. This triggers the backend's internal data pipeline, which updates the data status and makes the data available for querying.
+4.  **Querying:** Access the 'Query Dashboard' to run complex queries against the processed data using the `/api/data/query` endpoint.
 
-| Column Name | Description | Example Data |
-| :--- | :--- | :--- |
-| `timestamp` | The time the reading was taken. | `2023-10-26 10:00:00` |
-| `equipment_id` | Unique identifier for the equipment. | `E1001` |
-| `reading_type` | Type of measurement (e.g., temperature, pressure). | `Temperature` |
-| `value` | The measured numerical value. | `75.5` |
+## ⚙️ API Reference
 
-### Sample Data
+The application exposes a comprehensive RESTful API. All endpoints are prefixed with `/api/` and require a valid Bearer Token for access.
 
-For testing, you can use the provided sample CSV file located in the root directory.
-
-## 🌐 API Reference
-
-All API endpoints are managed by the backend server and are accessible via the following routes:
+### Authentication
 
 | Endpoint | Method | Description | Request Body | Response | 
 | :--- | :--- | :--- | :--- | :--- |
-| `/api/auth/login` | `POST` | Authenticates user credentials. | `{username, password}` | `{token}` |
-| `/api/data/upload` | `POST` | Processes and stores uploaded CSV data. | `multipart/form-data` (file) | `{status, records_processed}` |
-| `/api/data/summary` | `GET` | Retrieves summary statistics for the latest data set. | None | `{min, max, avg, count}` |
-| `/api/data/history` | `GET` | Fetches historical data records. | `?equipment_id=E1001` | `[{...}]` |
-| `/api/report/generate` | `POST` | Generates a PDF report based on selected parameters. | `{start_date, end_date}` | `file:pdf` |
+| `/api/auth/login` | `POST` | Authenticates user credentials and returns a JWT token. | `{ "username": "string", "password": "string" }` | `{ "token": "jwt_string" }` |
+| `/api/auth/refresh` | `POST` | Refreshes an expired access token. | `{ "refresh_token": "string" }` | `{ "token": "jwt_string" }` |
 
-## 📐 System Architecture
+### Data Endpoints
 
-For developers interested in the system design, the architecture is composed of three main services communicating via RESTful APIs.
+| Endpoint | Method | Description | Parameters | Request Body | 
+| :--- | :--- | :--- | :--- | :--- |
+| `/api/data/upload` | `POST` | Uploads a file for processing. | `file` (multipart/form-data) | N/A | 
+| `/api/data/status/{id}` | `GET` | Retrieves the processing status for a given data ID. | `id` (path parameter) | None | 
+| `/api/data/query` | `POST` | Executes a complex query against processed data. | None | `{ "query_params": { ... } }` |
 
-### Architecture Diagram
+## 🏗️ Architecture
 
-## 🖼️ UI Overview
+### Component Diagram
 
-The application features a secure login page and a main dashboard for data visualization and management.
+This diagram illustrates the interaction between the primary components:
 
-*   **Login Page:** The initial entry point for authenticated users.
-*   **Dashboard:** The primary workspace featuring data upload controls, summary charts, and the data table.
+### Data Flow Diagram
 
-## 📚 Development & Contribution
+This diagram shows the lifecycle of data from ingestion to querying:
 
-We welcome contributions! Please feel free to open an issue or submit a pull request.
+## 🤝 Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and build. Any contributions you make are **greatly appreciated**.
+
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`) 
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
 ## 📄 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Setup Guide
 
 ### Backend Setup
 
-_From `README.md`:_
-
-
-### Prerequisites
-
-- Python 3.10+
-- Node.js 18+
-- pip, npm
-
-### Backend Setup
-
 ```bash
 cd backend
-python -m venv venv
-
-# Windows
-.\venv\Scripts\Activate.ps1
-
-# Linux/Mac
-source venv/bin/activate
-
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# Linux/macOS: source .venv/bin/activate
 pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser  # Optional, for admin access
-python manage.py runserver
 ```
-
-Backend runs at **http://localhost:8000**
-
-### Web Frontend Setup
-
-```bash
-cd web-frontend
-npm install
-npm run dev
-```
-
-Web app runs at **http://localhost:5173**
-
-### Desktop Frontend Setup
-
-```bash
 
 ### Frontend Setup
 
